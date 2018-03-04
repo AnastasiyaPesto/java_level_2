@@ -11,4 +11,7 @@ public class Monitor {
         this.price = price;
     }
 
+    public Monitor() {
+
+    }
 }

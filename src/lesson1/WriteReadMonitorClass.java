@@ -12,7 +12,23 @@ public class WriteReadMonitorClass implements JsonSerializer<Monitor>, JsonDeser
         String name = object.get("Name").getAsString();
         String model = object.get("Model").getAsString();
         Double price = object.get("Price").getAsDouble();
-        return new Monitor(name, model, price);
+
+        Monitor monitor = new Monitor();
+        Class monitorClass = Monitor.class;
+        try {
+            Field nameMonitor = monitorClass.getDeclaredField("name");
+            Field modelMonitor = monitorClass.getDeclaredField("model");
+            Field priceMonitor = monitorClass.getDeclaredField("price");
+            nameMonitor.setAccessible(true);
+            nameMonitor.set(monitor, name);
+            modelMonitor.setAccessible(true);
+            modelMonitor.set(monitor, model);
+            priceMonitor.setAccessible(true);
+            priceMonitor.set(monitor, price);
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
+        return monitor;
     }
 
     @Override
