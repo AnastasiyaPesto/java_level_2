@@ -10,4 +10,5 @@ public class Monitor {
         this.model = model;
         this.price = price;
     }
+
 }
