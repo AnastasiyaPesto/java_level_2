@@ -13,6 +13,10 @@ public class RandomIntProcessor {
     public static Object[] getObjects(String basePackage) throws ClassNotFoundException,
                                                                  IllegalAccessException,
                                                                  InstantiationException {
+        /**
+         * new File("src\\" + basePackage.replace(".", "\\"));
+         * У Maven в папке src лежит ещё папка java
+         */
         File direction = new File("src\\" + basePackage.replace(".", "\\"));
         List<Class> classList = getClassesInDirectory(direction, basePackage);
         List<Object> objectList = new ArrayList<>();
