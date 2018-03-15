@@ -16,11 +16,18 @@ public class MyStack<T> implements MyCollection {
     }
     private StackElement head;
     private int realSize;
+    private int cap;
 
-    public MyStack(){ this.realSize = 0; }
+    public MyStack(int cap){
+        this.cap = cap;
+        this.realSize = 0;
+    }
 
-    public boolean push(T value) {
+    public boolean push(T value) throws StackOverflowException {
         StackElement elemStack = new StackElement(value);
+        if (realSize == cap) {
+            throw new StackOverflowException("Переполнение стека");
+        }
         if(head == null){
             head = elemStack;
         } else {
@@ -57,6 +64,10 @@ public class MyStack<T> implements MyCollection {
     @Override
     public boolean isEmpty() {
         return (realSize == 0);
+    }
+
+    public int getCap() {
+        return cap;
     }
 
     @Override
