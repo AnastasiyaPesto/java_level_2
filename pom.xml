@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pestovnikova</groupId>
-    <artifactId>Java2_pestovnikova</artifactId>
+    <artifactId>HomeWork_LevelUp2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
