@@ -38,15 +38,11 @@ public class MyStack<T> implements MyCollection {
         return true;
     }
 
-    public T pop() {
+    public T pop() throws EmptyStackException {
         T retVal = null;
 
         if(realSize == 0) {
-            try{
-                throw new EmptyStackException("Стек пустой. Удалять больше нечего");
-            } catch(EmptyStackException e){
-                e.printStackTrace();
-            };
+            throw new EmptyStackException("Стек пустой. Удалять больше нечего");
         }else{
             if (head.next == null){
                 retVal = head.value;
