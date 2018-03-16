@@ -1,5 +1,6 @@
 package lesson3;
 
+import lesson3.ExampleException.EmptyStackException;
 import lesson3.ExampleException.MyStack;
 import lesson3.ExampleException.StackOverflowException;
 import org.junit.jupiter.api.Assertions;
@@ -15,27 +16,51 @@ public class MyStackTest {
 
     @BeforeEach
     public void setMyStack() {
-        this.myStack = new MyStack<>(5);
+        this.myStack = new MyStack<>(3);
     }
 
     @Test
-    public void testPop () {
-        myStack.pop();
+    public void testPopWhenStackIsEmpty_throwEmptyStackException () {
+        Assertions.assertThrows(
+                EmptyStackException.class,
+                new Executable() {
+                    @Override
+                    public void execute() throws Throwable {
+                        myStack.pop();
+                    }
+                }
+        );
     }
 
     @Test
-    public void testPush() throws StackOverflowException {
-        Random elem = new Random();
+    public void testPeekWhenStackIsEmpty_testPopWhenStackIsEmpty_throwEmptyStackException() {
+        Assertions.assertThrows(
+                EmptyStackException.class,
+                new Executable() {
+                    @Override
+                    public void execute() throws Throwable {
+                        myStack.peek();
+                    }
+                }
+        );
+    }
+
+    @Test
+    public void testPushFiveIntegerWhenCapIsThree_throwStackOverflowException() throws StackOverflowException {
         Assertions.assertThrows(
                 StackOverflowException.class,
                 new Executable() {
                     @Override
                     public void execute() throws Throwable {
-                        for (int i = 0; i <= myStack.getCap(); i++) {
-                            myStack.push(elem.nextInt(10));
-                        }
+                        pushObjectInStack(8, 9, -1, 45, 8);
                     }
                 }
         );
+    }
+
+    private void pushObjectInStack(Integer... integers) throws StackOverflowException {
+        for (Integer integer : integers) {
+            myStack.push(integer);
+        }
     }
 }

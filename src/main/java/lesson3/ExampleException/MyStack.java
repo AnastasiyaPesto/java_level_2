@@ -61,6 +61,13 @@ public class MyStack<T> implements MyCollection {
         return retVal;
     }
 
+    public T peek() throws EmptyStackException {
+        if (realSize == 0) {
+            throw new EmptyStackException("Stack is empty");
+        }
+        return head.value;
+    }
+
     @Override
     public boolean isEmpty() {
         return (realSize == 0);
