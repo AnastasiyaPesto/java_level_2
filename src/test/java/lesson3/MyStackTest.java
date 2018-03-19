@@ -75,7 +75,7 @@ public class MyStackTest {
     }
 
     @Test
-    public void testPop_returnNotNull() throws StackOverflowException, EmptyStackException {
+    public void testPop_returnObjectAndChangeSize() throws StackOverflowException, EmptyStackException {
         pushObjectInStack(0, 1, 2);
         int oldSize = myStack.getSize();
         Integer integer = myStack.pop();
@@ -85,7 +85,7 @@ public class MyStackTest {
     }
 
     @Test
-    public void testPeek_returnNotNull() throws StackOverflowException, EmptyStackException {
+    public void testPeek_returnObjectAndNotChangeSize() throws StackOverflowException, EmptyStackException {
         pushObjectInStack(0, 1, 2);
         int oldSize = myStack.getSize();
         Integer integer = myStack.peek();
