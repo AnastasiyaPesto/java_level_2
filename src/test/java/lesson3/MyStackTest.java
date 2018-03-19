@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class MyStackTest {
@@ -33,7 +34,7 @@ public class MyStackTest {
     }
 
     @Test
-    public void testPeekWhenStackIsEmpty_testPopWhenStackIsEmpty_throwEmptyStackException() {
+    public void testPeekWhenStackIsEmpty_throwEmptyStackException() {
         Assertions.assertThrows(
                 EmptyStackException.class,
                 new Executable() {
@@ -62,5 +63,34 @@ public class MyStackTest {
         for (Integer integer : integers) {
             myStack.push(integer);
         }
+    }
+
+    @Test
+    public void testPush_newInteger_returnTrue() throws StackOverflowException {
+        Integer integer = 7;
+        int oldSize = myStack.getSize();
+        myStack.push(integer);
+        int newSize = myStack.getSize();
+        Assertions.assertTrue(oldSize < newSize);
+    }
+
+    @Test
+    public void testPop_returnNotNull() throws StackOverflowException, EmptyStackException {
+        pushObjectInStack(0, 1, 2);
+        int oldSize = myStack.getSize();
+        Integer integer = myStack.pop();
+        int newSize = myStack.getSize();
+        Assertions.assertNotNull(integer);
+        Assertions.assertTrue(newSize < oldSize);
+    }
+
+    @Test
+    public void testPeek_returnNotNull() throws StackOverflowException, EmptyStackException {
+        pushObjectInStack(0, 1, 2);
+        int oldSize = myStack.getSize();
+        Integer integer = myStack.peek();
+        int newSize = myStack.getSize();
+        Assertions.assertNotNull(integer);
+        Assertions.assertTrue(oldSize == newSize);
     }
 }
