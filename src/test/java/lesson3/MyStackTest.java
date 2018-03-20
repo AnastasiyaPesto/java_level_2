@@ -66,12 +66,12 @@ public class MyStackTest {
     }
 
     @Test
-    public void testPush_newInteger_returnTrue() throws StackOverflowException {
+    public void testPush_newInteger_returnTrueAndChangeSize() throws StackOverflowException {
         Integer integer = 7;
         int oldSize = myStack.getSize();
         myStack.push(integer);
         int newSize = myStack.getSize();
-        Assertions.assertTrue(oldSize < newSize);
+        Assertions.assertEquals(oldSize + 1, newSize);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class MyStackTest {
         Integer integer = myStack.pop();
         int newSize = myStack.getSize();
         Assertions.assertNotNull(integer);
-        Assertions.assertTrue(newSize < oldSize);
+        Assertions.assertEquals(oldSize - 1, newSize);
     }
 
     @Test
@@ -91,6 +91,6 @@ public class MyStackTest {
         Integer integer = myStack.peek();
         int newSize = myStack.getSize();
         Assertions.assertNotNull(integer);
-        Assertions.assertTrue(oldSize == newSize);
+        Assertions.assertEquals(oldSize, newSize);
     }
 }
