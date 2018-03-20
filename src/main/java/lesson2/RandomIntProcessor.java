@@ -60,7 +60,11 @@ public class RandomIntProcessor {
                 field.set(object, random);
             }
         }
+    }
 
+
+    public void nonStaticProcess(Object object) throws IllegalAccessException {
+        process(object);
     }
 
 }
