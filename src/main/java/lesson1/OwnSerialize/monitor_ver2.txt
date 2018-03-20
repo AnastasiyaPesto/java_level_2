@@ -1,0 +1,2 @@
+Dell,RLO340,8593
+Samsung,S24D300H,10000
