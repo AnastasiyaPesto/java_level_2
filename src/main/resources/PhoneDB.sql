@@ -30,5 +30,11 @@ insert into mytelephonecontacts.contacts (name, last_name, phone) values
 /*Получить все данные из таблицы*/
 select * from mytelephonecontacts.contacts;
 
-update mytelephonecontacts.contacts set last_name = "ПроцкоД" where last_name = "Процко"	 
+/*update mytelephonecontacts.contacts set last_name = "ПроцкоД" where last_name = "Процко";*/
 
+select name, last_name from mytelephonecontacts.contacts;
+select phone from mytelephonecontacts.contacts where name = "Дмитрий" or name = "Иван";
+select phone from mytelephonecontacts.contacts where name in ("Дмитрий", "Иван");
+
+delete from mytelephonecontacts.contacts where last_name = "Процко";
+select * from mytelephonecontacts.contacts;
