@@ -1,4 +1,4 @@
-package lesson6.ReadProperies;
+package lesson6.configuration;
 
 public class Configuration {
 

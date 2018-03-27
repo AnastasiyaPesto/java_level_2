@@ -1,4 +1,4 @@
-package lesson6.ReadProperies;
+package lesson6.configuration;
 
 import java.io.*;
 
@@ -38,5 +38,4 @@ public class ReadProperties {
         }
         return configuration;
     }
-
 }

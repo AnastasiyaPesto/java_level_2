@@ -1,7 +1,9 @@
 package lesson6;
 
-import lesson6.ReadProperies.Configuration;
-import lesson6.ReadProperies.ReadProperties;
+
+
+import lesson6.configuration.Configuration;
+import lesson6.configuration.ReadProperties;
 
 import java.io.File;
 import java.io.IOException;
