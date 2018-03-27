@@ -1,6 +1,6 @@
 package lesson6.ReadProperies;
 
-public class PropertiesDB {
+public class Configuration {
 
     private String jdbcDatabaseName;
     private String jdbcHost;

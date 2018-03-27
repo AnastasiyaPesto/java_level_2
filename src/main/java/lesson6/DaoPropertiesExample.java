@@ -1,14 +1,13 @@
 package lesson6;
 
-import lesson6.ReadProperies.PropertiesDB;
-import lesson6.ReadProperies.ReadProperies;
+import lesson6.ReadProperies.Configuration;
+import lesson6.ReadProperies.ReadProperties;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.SQLRecoverableException;
 
 public class DaoPropertiesExample {
 
@@ -23,14 +22,14 @@ public class DaoPropertiesExample {
     public static void main(String[] args) {
         File file = new File("src/main/resources/employyes/configdb.properties");
         try {
-            PropertiesDB propDB = ReadProperies.readFromProperties(file);
-            String url = "jdbc:mysql://" + propDB.getJdbcHost() + ":" +
-                    propDB.getJdbcPort() + "/" + propDB.getJdbcDatabaseName();
-            if (propDB.getJdbcTimeZone() != null) {
-                url = url + "?" + propDB.getJdbcTimeZone();
+            Configuration config = ReadProperties.readFromProperties(file);
+            String url = "jdbc:mysql://" + config.getJdbcHost() + ":" +
+                    config.getJdbcPort() + "/" + config.getJdbcDatabaseName();
+            if (config.getJdbcTimeZone() != null) {
+                url = url + "?" + config.getJdbcTimeZone();
             }
-            String user = propDB.getJdbcUserName();
-            String pasw = propDB.getJdbcPassword();
+            String user = config.getJdbcUserName();
+            String pasw = config.getJdbcPassword();
             try (Connection connection = DriverManager.getConnection(url, user, pasw)) {
                 int i = 0;
             } catch (SQLException e) {
