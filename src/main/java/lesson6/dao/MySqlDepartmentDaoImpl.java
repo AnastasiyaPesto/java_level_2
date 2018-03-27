@@ -18,6 +18,7 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
             String sql = "insert into department value (" + id + ", " + name + ", " + city + ")";
 
             Statement statement = connection.createStatement();
+
             int result = statement.executeUpdate(sql);
             System.out.println("Rows affected: " + result);
             // TODO: get department

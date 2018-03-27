@@ -17,9 +17,8 @@ public interface DepartmentDao {
     void delete(int id);
 
     // select * from department
+    // здесь переводим ResultSet в Department
     Collection<Department> findAll();
 
-
     Department findById(int id);
-
 }
