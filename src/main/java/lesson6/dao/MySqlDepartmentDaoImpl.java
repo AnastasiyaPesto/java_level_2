@@ -7,6 +7,12 @@ import java.util.Collection;
 
 public class MySqlDepartmentDaoImpl implements DepartmentDao {
 
+    Connection connection;
+
+    public MySqlDepartmentDaoImpl(Connection connect) {
+        this.connection = connect;
+    }
+
     @Override
     public Department create(int id, String name, String city) throws SQLException {
         try (Connection connection = DriverManager.getConnection(
