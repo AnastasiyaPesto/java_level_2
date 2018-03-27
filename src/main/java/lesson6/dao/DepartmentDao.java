@@ -20,5 +20,5 @@ public interface DepartmentDao {
     // здесь переводим ResultSet в Department
     Collection<Department> findAll();
 
-    Department findById(int id);
+    Department findById(int id) throws SQLException;
 }

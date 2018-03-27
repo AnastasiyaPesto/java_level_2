@@ -48,7 +48,12 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public Department findById(int id) {
+    public Department findById(int id) throws SQLException {
+        try (Statement statement = connection.createStatement()) {
+            String strSelectById = "select * from department where department_id = 0";
+            ResultSet resultSet = statement.executeQuery(strSelectById);
+        }
+
         return null;
     }
 }
