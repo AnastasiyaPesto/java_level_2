@@ -20,7 +20,7 @@ public class MySqlExample {
         // 127.0.0.1 = localhost (C:\Windows\System32\drivers\etc)
         // port - порт сервера
         // jdbc:<database vendor>://<ip>:<port>/<database_name>
-        // "jdbc:mysql://127.0.0.1:3306/employees?createDatabaseIfNotExists=true
+        // jdbc:mysql://127.0.0.1:3306/employees?createDatabaseIfNotExists=true
         try (Connection connection = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/employees?serverTimezone=UTC",
                     "root",

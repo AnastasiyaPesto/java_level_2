@@ -2,11 +2,12 @@ package lesson6.configuration;
 
 import java.io.*;
 
-public class ReadProperties {
-
-    public static Configuration readFromProperties(File file) throws IOException {
+public class PropertiesJdbcConfiguration implements JdbcConfiguration {
+    @Override
+    public Configuration load() throws IOException {
         Configuration configuration = new Configuration();
-
+        String path = "src/main/resources/employyes/configdb.properties";
+        File file = new File(path);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
