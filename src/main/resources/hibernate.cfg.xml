@@ -21,9 +21,13 @@
             org.hibernate.dialect.MySQL57Dialect
         </property>
 
-        <property name="hbmddl2.auto"></property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hbm2ddl.auto">create-drop</property>
 
         <mapping class="lesson7.Department" />
+        <mapping class="lesson7.DepartmentInfo" />
     </session-factory>
     
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-luse employees;
+use employees;
  
 select * from employee emp, employee_info empi
 where emp.employee_id = empi.employee_id;
