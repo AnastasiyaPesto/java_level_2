@@ -42,6 +42,7 @@ public class DaoPropertiesExample {
             dao.delete(7);
             Collection<Department> departments = dao.findAll();
             Department department = dao.findById(1);
+            dao.update(2, "Law", "Moscow");
        } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Подключение к базе не установлено");

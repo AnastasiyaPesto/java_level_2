@@ -28,25 +28,29 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
                 System.out.println("Такой первичный ключ уже существует");
             }
         }
-        return null;
+        return findById(id);
     }
 
     @Override
     public Department update(int id, String name, String city) throws SQLException {
-//        try (Statement statement = connection.prepare {
-//
-//        }
-        return null;
+        try (Statement statement = connection.createStatement()) {
+            // update department set name = name, city = city where department_id = id;
+            String sql = "update department set name = " + "\"" + name +
+                    "\", city = " + "\"" + city + "\"" + "where department_id = " + id;
+            int result = statement.executeUpdate(sql);
+        }
+        return findById(id);
     }
 
     @Override
     public void delete(int id) throws SQLException {
+        // delete from department where department_id = id
         String sql = "delete from department where department_id = " + id;
         try (Statement statement = connection.createStatement()) {
             try {
                 int delRow = statement.executeUpdate(sql);
             } catch (SQLIntegrityConstraintViolationException sqlicve) {
-                System.out.println("Записи с таким первичным не существует");
+                System.out.println("Записи с таким первичным ключом не существует");
             }
         }
     }
@@ -76,7 +80,7 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
                 int idDepart = resultSet.getInt("department_id");
                 String nameDepart = resultSet.getString("name");
                 String cityDepart = resultSet.getString("city");
-               return new Department(idDepart, nameDepart, cityDepart);
+                return new Department(idDepart, nameDepart, cityDepart);
             } else {
                 return null;
             }
