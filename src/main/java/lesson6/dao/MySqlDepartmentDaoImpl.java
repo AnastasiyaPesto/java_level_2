@@ -1,5 +1,7 @@
 package lesson6.dao;
 
+import lesson6.Exception.ActionEnum;
+import lesson6.Exception.SQLNoActionException;
 import lesson6.domain.Department;
 
 import java.sql.*;
@@ -22,14 +24,18 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
         try (Statement statement = connection.createStatement()) {
             try {
                 int result = statement.executeUpdate(sql);
-                System.out.println("Rows affected: " + result);
-                return findById(id);
+                if (result == 1) {
+                    return findById(id);
+                } else if (result == 0) {
+                    throw new SQLNoActionException(ActionEnum.INSERT);
+                }
             } catch (SQLIntegrityConstraintViolationException sqlicve) {
                 System.out.println("Такой первичный ключ уже существует");
             }
         }
-        return findById(id);
+        return null;
     }
+
 
     @Override
     public Department update(int id, String name, String city) throws SQLException {
@@ -38,8 +44,14 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
             String sql = "update department set name = " + "\"" + name +
                     "\", city = " + "\"" + city + "\"" + "where department_id = " + id;
             int result = statement.executeUpdate(sql);
+            if (result == 1) {
+                return findById(id);
+            }
+            if (result == 0) {
+                throw new SQLNoActionException(ActionEnum.UPDATE);
+            }
         }
-        return findById(id);
+        return null;
     }
 
     @Override
@@ -49,6 +61,9 @@ public class MySqlDepartmentDaoImpl implements DepartmentDao {
         try (Statement statement = connection.createStatement()) {
             try {
                 int delRow = statement.executeUpdate(sql);
+                if (delRow == 0) {
+                    throw new SQLNoActionException(ActionEnum.DELETE);
+                }
             } catch (SQLIntegrityConstraintViolationException sqlicve) {
                 System.out.println("Записи с таким первичным ключом не существует");
             }
