@@ -11,23 +11,29 @@
         </property>
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://127.0.0.1:3306/employees77?createDatabaseIfNotExists=true&amp;serverTimezone=UTC
+            jdbc:mysql://127.0.0.1:3306/employees77?createDatabaseIfNotExists=true&amp;serverTimezone=UTC&amp;useSSL=false
+            <!--INIT=create schema if not exists employees77-->
         </property>
 
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
 
+        <!-- Dialect - как использовать символы или ещё что-то -->
         <property name="hibernate.dialect">
             org.hibernate.dialect.MySQL57Dialect
         </property>
 
+        <!-- Показывает какие sql запросы hibernate будет отсылать в базу -->
         <property name="hibernate.show_sql">true</property>
+        <!-- Выводит информацию в более читабельном виде -->
         <property name="hibernate.format_sql">true</property>
 
+        <!-- Указывает поведение пи первом подключении к базе -->
+        <!-- смотри презентацию lesson7 -->
         <property name="hbm2ddl.auto">create-drop</property>
 
         <mapping class="lesson7.Department" />
-        <mapping class="lesson7.DepartmentInfo" />
+       <!--  <mapping class="lesson7.DepartmentInfo" /> -->
     </session-factory>
     
 </hibernate-configuration>

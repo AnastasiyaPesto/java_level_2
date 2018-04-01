@@ -1,7 +1,6 @@
 package lesson7;
 
 import javax.persistence.*;
-import java.lang.annotation.Target;
 
 @Entity
 @Table(name = "DEPARTMENT")
@@ -15,16 +14,16 @@ public class Department {
     @Column(name = "department_name", unique = true, nullable = false)
     private String name;
 
-    @OneToOne(mappedBy = "department")
-    private DepartmentInfo info;
+//    @OneToOne(mappedBy = "department")
+//    private DepartmentInfo info;
 
-    public DepartmentInfo getInfo() {
-        return info;
-    }
-
-    public void setInfo(DepartmentInfo info) {
-        this.info = info;
-    }
+//    public DepartmentInfo getInfo() {
+//        return info;
+//    }
+//
+//    public void setInfo(DepartmentInfo info) {
+//        this.info = info;
+//    }
 
 
     public int getId() {
@@ -52,7 +51,6 @@ public class Department {
     }
 
     @Column(name = "city", nullable = false)
-
     private String city;
 
     public Department() {}
