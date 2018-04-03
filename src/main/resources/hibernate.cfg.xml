@@ -33,7 +33,7 @@
         <property name="hbm2ddl.auto">create-drop</property>
 
         <mapping class="lesson7.Department" />
-       <!--  <mapping class="lesson7.DepartmentInfo" /> -->
+        <mapping class="lesson7.DepartmentInfo" />
     </session-factory>
     
 </hibernate-configuration>
