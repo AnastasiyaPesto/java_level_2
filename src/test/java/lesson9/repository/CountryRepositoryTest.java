@@ -58,4 +58,15 @@ public class CountryRepositoryTest {
         verify(transaction).commit();
         verify(session).close();
     }
+
+    @Test
+    public void testDelete_validId() {
+        doReturn(true).when(repository).delete(Matchers.anyInt());
+
+        verify(session).get(Matchers.any(Country.class), Matchers.anyInt());
+
+        verify(transaction).commit();
+        verify(session).close();
+    }
 }
+
