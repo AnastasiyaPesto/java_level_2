@@ -61,12 +61,29 @@ public class CountryRepositoryTest {
 
     @Test
     public void testDelete_validId() {
-        doReturn(true).when(repository).delete(Matchers.anyInt());
+//        doReturn(true).when(repository).delete(Matchers.anyInt());
+
+        repository.delete(Matchers.anyInt());
 
         verify(session).get(Matchers.any(Country.class), Matchers.anyInt());
 
         verify(transaction).commit();
         verify(session).close();
+    }
+
+    @Test
+    public void testUpdate_validData_returnUpdateObject() {
+        String name = "Ukraine";
+        String capital = "Kiev";
+        double population = 42_386_403d; //wiki
+        Country country = repository.update(eq(Matchers.anyInt()), name, capital, population);
+//        Country country = repository.update(Matchers.anyInt(), name, capital, population);
+        assertEquals(name, country.getName());
+        assertEquals(capital, country.getCapital());
+        assertEquals(population, country.getPopulation(), 0.2d);
+        verify(session).update(Matchers.any(Country.class));
+        verify(session, times(2)).close();
+        verify(transaction).commit();
     }
 }
 
