@@ -53,6 +53,7 @@ public class CountryRepositoryImpl implements CountryRepository {
 
         // перевожу объект в состояние detached (отвязываю объект от session)
         session.close();
+
         // вызываю все методы set, чтобы не вызывался на каждыц set свой update
         country.setName(name);
         country.setCapital(capital);
