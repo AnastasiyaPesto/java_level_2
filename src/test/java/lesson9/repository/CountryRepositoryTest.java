@@ -59,17 +59,16 @@ public class CountryRepositoryTest {
         verify(session).close();
     }
 
-//    @Test
-//    public void testDelete_validId() {
-////        doReturn(true).when(repository).delete(Matchers.anyInt());
-//
-//        repository.delete(Matchers.anyInt());
-//
-//        verify(session).get(Matchers.any(Country.class), Matchers.anyInt());
-//
-//        verify(transaction).commit();
-//        verify(session).close();
-//    }
+    @Test
+    public void testDelete_validId() {
+//        doReturn(true).when(repository).delete(Matchers.anyInt());
+        repository.delete(1);
+
+        verify(session).get(Matchers.eq(Country.class), Matchers.eq(1));
+
+        verify(transaction).commit();
+        verify(session).close();
+    }
 
     @Test
     public void testUpdate_validData_returnUpdateObject() {
@@ -78,13 +77,20 @@ public class CountryRepositoryTest {
         String capital = "Kiev";
         double population = 42_386_403d; //wiki
 
-        Country countryAdd = repository.create(name, capital, population);
-        Country countryDel = repository.update(countryAdd.getId(), countryAdd.getName(),
-                countryAdd.getCapital(), countryAdd.getPopulation());
+        Country country = new Country();
+        country.setId(id);
+        country.setName(name);
+        country.setCapital(capital);
+        country.setPopulation(population);
 
+        when(session.get(Country.class, id)).thenReturn(country);
+//        Country countryAdd = repository.create(name, capital,; population);
+        Country countryDel = repository.update(2, name,
+                capital, population);
         assertEquals(name, countryDel.getName());
         assertEquals(capital, countryDel.getCapital());
         assertEquals(population, countryDel.getPopulation(), 0.2d);
+
         verify(session).update(Matchers.any(Country.class));
         verify(session, times(2)).close();
         verify(transaction).commit();
