@@ -1,4 +1,4 @@
-package lesson9.repository;
+ package lesson9.repository;
 
 import lesson9.domain.Country;
 import org.hibernate.Session;
@@ -84,8 +84,8 @@ public class CountryRepositoryTest {
         country.setPopulation(population);
 
         when(session.get(Country.class, id)).thenReturn(country);
-//        Country countryAdd = repository.create(name, capital,; population);
-        Country countryDel = repository.update(2, name,
+
+        Country countryDel = repository.update(1, name,
                 capital, population);
         assertEquals(name, countryDel.getName());
         assertEquals(capital, countryDel.getCapital());
