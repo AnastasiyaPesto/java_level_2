@@ -10,8 +10,7 @@ public class Country {
     @Column
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country-id-gen")
     @SequenceGenerator(name = "country-id-gen", initialValue = 10000,
-            allocationSize = 20, sequenceName = "alloc-country-id")
-
+            allocationSize = 20, sequenceName = "alloc_country_id")
     private int id;
 
     @Column(nullable = false, unique = true)
