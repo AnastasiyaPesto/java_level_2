@@ -9,7 +9,7 @@ drop table if exists department;
 
 create table if not exists department (
 	department_id int primary key auto_increment,
-    name varchar(100) not null,
+    name varchar(100) not null unique,
 	city varchar(50)
 );
 
