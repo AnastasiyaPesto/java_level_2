@@ -24,10 +24,11 @@ public class Employee {
     @Column(length = 40, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    //todo
-    @OneToOne(mappedBy = "")
-    private int department_id;
+    @Column(nullable = false, name = "department_id")
+    private int departmentId;
+
+    @OneToOne(mappedBy = "employeeId")
+    private EmployeeInfo employeeInfo;
 
     public Employee(int id, String login, String name, String lastName, String email, int department_id) {
         this.id = id;
@@ -35,7 +36,7 @@ public class Employee {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
-        this.department_id = department_id;
+        this.departmentId = department_id;
     }
 
     public int getId() {
@@ -79,10 +80,10 @@ public class Employee {
     }
 
     public int getDepartment_id() {
-        return department_id;
+        return departmentId;
     }
 
     public void setDepartment_id(int department_id) {
-        this.department_id = department_id;
+        this.departmentId = department_id;
     }
 }

@@ -1,9 +1,6 @@
 package lesson10_hw.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "employeeInfo")
@@ -20,7 +17,7 @@ public class EmployeeInfo {
     @Column(length = 40)
     private String internalTelephone;
 
-    @Id
-    @Column
+    @Column(name = "employee_id")
+    @OneToOne(mappedBy = "id")
     private int employeeId;
 }
