@@ -5,6 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class CountryRepositoryImpl implements CountryRepository {
 
     private final SessionFactory factory;
@@ -65,6 +67,32 @@ public class CountryRepositoryImpl implements CountryRepository {
         session.close();
 
         return country;
+    }
+
+    @Override
+    public Country getById(int id) {
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Country country = session.get(Country.class, id);
+        transaction.commit();
+        session.close();
+
+        return country;
+    }
+
+    @Override
+    public List<Country> getCountriesWithMillionPopulation() {
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Country> countries = session.createQuery("from Country where population > :population", Country.class)
+                .setParameter("population", 1_000_000d)
+                .getResultList();
+
+        transaction.commit();
+        session.close();
+        return countries;
     }
 
 }
