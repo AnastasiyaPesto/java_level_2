@@ -27,7 +27,8 @@ public class Employee {
     @Column(nullable = false, name = "department_id")
     private int departmentId;
 
-    @OneToOne(mappedBy = "employeeId")
+    @OneToOne
+    @JoinColumn(name = "employeeId")
     private EmployeeInfo employeeInfo;
 
     public Employee(int id, String login, String name, String lastName, String email, int department_id) {
