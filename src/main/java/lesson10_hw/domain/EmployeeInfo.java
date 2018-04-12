@@ -5,6 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "employeeInfo")
 public class EmployeeInfo {
+    @Id
+    @Column(name = "employee_id")
+    private int employeeId;
+
     @Column
     private int age;
 
@@ -16,7 +20,4 @@ public class EmployeeInfo {
 
     @Column(length = 40)
     private String internalTelephone;
-
-    @Column(name = "employee_id")
-    private int employeeId;
 }

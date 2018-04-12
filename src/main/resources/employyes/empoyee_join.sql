@@ -1,4 +1,8 @@
 use employees;
+
+select * from department;
+ 
+select * from department where department_id = 2; ;
  
 select * from employee emp, employee_info empi
 where emp.employee_id = empi.employee_id;

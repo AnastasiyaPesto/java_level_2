@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Table(name = "employee")
 public class Employee {
     @Id
-    @Column
+    @Column(name = "employee_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee-id-gen")
     @SequenceGenerator(name = "employee-id-gen", initialValue = 100,
             allocationSize = 5, sequenceName = "alloc_employee_id")
-    private int id;
+    private int employeeId;
 
     @Column(length = 6, nullable = false, unique = true)
     private String login;
@@ -27,12 +27,14 @@ public class Employee {
     @Column(nullable = false, name = "department_id")
     private int departmentId;
 
-    @OneToOne
-    @JoinColumn(name = "employee_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+//    @OneToOne
+//    @JoinColumn(name = "employeeInfo_id")
     private EmployeeInfo employeeInfo;
 
     public Employee(int id, String login, String name, String lastName, String email, int department_id) {
-        this.id = id;
+        this.employeeId = id;
         this.login = login;
         this.name = name;
         this.lastName = lastName;
@@ -41,11 +43,11 @@ public class Employee {
     }
 
     public int getId() {
-        return id;
+        return employeeId;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.employeeId = id;
     }
 
     public String getLogin() {
