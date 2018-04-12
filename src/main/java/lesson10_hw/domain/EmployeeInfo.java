@@ -18,6 +18,5 @@ public class EmployeeInfo {
     private String internalTelephone;
 
     @Column(name = "employee_id")
-//    @OneToOne
     private int employeeId;
 }

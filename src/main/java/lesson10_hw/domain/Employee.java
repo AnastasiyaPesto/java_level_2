@@ -28,7 +28,7 @@ public class Employee {
     private int departmentId;
 
     @OneToOne
-    @JoinColumn(name = "employeeId")
+    @JoinColumn(name = "employee_id")
     private EmployeeInfo employeeInfo;
 
     public Employee(int id, String login, String name, String lastName, String email, int department_id) {
