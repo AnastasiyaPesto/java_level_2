@@ -20,4 +20,14 @@ public class EmployeeInfo {
 
     @Column(length = 40)
     private String internalTelephone;
+
+
+    public EmployeeInfo(int employeeId, int age, String position, boolean sex, String internalTelephone) {
+        this.employeeId = employeeId;
+        this.age = age;
+        this.position = position;
+        this.sex = sex;
+        this.internalTelephone = internalTelephone;
+    }
+
 }

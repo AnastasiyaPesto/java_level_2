@@ -33,6 +33,11 @@ public class Employee {
 //    @JoinColumn(name = "employeeInfo_id")
     private EmployeeInfo employeeInfo;
 
+    public void setEmployeeInfo(EmployeeInfo employeeInfo) {
+        this.employeeInfo = employeeInfo;
+    }
+
+
     public Employee(int id, String login, String name, String lastName, String email, int department_id) {
         this.employeeId = id;
         this.login = login;
