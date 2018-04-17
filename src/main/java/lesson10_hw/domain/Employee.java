@@ -47,6 +47,10 @@ public class Employee {
         this.departmentId = department_id;
     }
 
+    public Employee() {
+
+    }
+
     public int getId() {
         return employeeId;
     }
